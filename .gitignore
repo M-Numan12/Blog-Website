@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Next.js build output
+client/.next/
+client/out/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+client/.env
+client/.env.local
+server/.env
+
+# Uploads (keep .gitkeep)
+server/uploads/*
+!server/uploads/.gitkeep
+
+# Logs & OS files
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
