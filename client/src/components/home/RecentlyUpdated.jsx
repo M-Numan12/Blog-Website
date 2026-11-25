@@ -15,20 +15,35 @@ export default function RecentlyUpdated({ articles = [] }) {
         {articles.slice(0, 4).map((article) => (
           <div
             key={article._id || article.slug}
-            className="py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+            className="py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 group"
           >
-            <div>
-              <span className="text-xs uppercase tracking-widest font-semibold text-brand-gold">
-                {article.categoryId?.name || 'Biography'}
-              </span>
-              <h3 className="mt-1 text-lg font-bold text-brand-black">
-                <Link
-                  href={`/celebrity/${article.slug}`}
-                  className="hover:text-brand-gold transition-colors"
-                >
-                  {article.title}
-                </Link>
-              </h3>
+            <div className="flex items-center gap-4 min-w-0">
+              <Link
+                href={`/celebrity/${article.slug}`}
+                tabIndex={-1}
+                aria-hidden="true"
+                className="w-24 aspect-[16/9] bg-brand-black overflow-hidden shrink-0 hidden sm:block"
+              >
+                <img
+                  src={article.heroImage?.url || '/images/blog-cillian-murphy.jpg'}
+                  alt={article.heroImage?.altText || article.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </Link>
+              <div className="min-w-0">
+                <span className="text-xs uppercase tracking-widest font-semibold text-brand-gold">
+                  {article.categoryId?.name || 'Biography'}
+                </span>
+                <h3 className="mt-1 text-lg font-bold text-brand-black truncate">
+                  <Link
+                    href={`/celebrity/${article.slug}`}
+                    className="hover:text-brand-gold transition-colors"
+                  >
+                    {article.title}
+                  </Link>
+                </h3>
+              </div>
             </div>
 
             <div className="shrink-0 text-xs text-brand-charcoal/70 sm:text-right">
