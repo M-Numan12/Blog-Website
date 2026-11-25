@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "description": "Frontend for CelebScope (Next.js + React + Tailwind CSS)",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

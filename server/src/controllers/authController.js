@@ -34,12 +34,18 @@ export async function login(req, res, next) {
       { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
     );
 
-    res.cookie('token', token, {
+    const isProd = process.env.NODE_ENV === 'production';
+    const cookieOptions = {
       httpOnly: true,
-      sameSite: 'lax',
-      secure: process.env.NODE_ENV === 'production',
+      sameSite: process.env.COOKIE_SAME_SITE || (isProd ? 'none' : 'lax'),
+      secure: isProd,
       maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+    };
+    if (process.env.COOKIE_DOMAIN) {
+      cookieOptions.domain = process.env.COOKIE_DOMAIN;
+    }
+
+    res.cookie('token', token, cookieOptions);
 
     await recordAuditLog({
       userId: user._id,
@@ -65,11 +71,16 @@ export async function login(req, res, next) {
 }
 
 export async function logout(req, res) {
-  res.clearCookie('token', {
+  const isProd = process.env.NODE_ENV === 'production';
+  const cookieOptions = {
     httpOnly: true,
-    sameSite: 'lax',
-    secure: process.env.NODE_ENV === 'production',
-  });
+    sameSite: process.env.COOKIE_SAME_SITE || (isProd ? 'none' : 'lax'),
+    secure: isProd,
+  };
+  if (process.env.COOKIE_DOMAIN) {
+    cookieOptions.domain = process.env.COOKIE_DOMAIN;
+  }
+  res.clearCookie('token', cookieOptions);
   return res.json({ message: 'Logged out successfully' });
 }
 
