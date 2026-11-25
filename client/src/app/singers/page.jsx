@@ -1,13 +1,25 @@
-export const metadata = {
+import CategoryListingView from '@/components/article/CategoryListingView';
+import { getArticles } from '@/lib/data';
+import { buildPageMetadata } from '@/lib/seo';
+
+export const metadata = buildPageMetadata({
   title: 'Singers',
   description: 'Verified biographies, discographies, and career milestones of singers and musicians.',
-};
+  path: '/singers',
+});
 
-export default function SingersPage() {
+export default async function SingersPage({ searchParams }) {
+  const sp = await searchParams;
+  const page = Math.max(parseInt(sp?.page, 10) || 1, 1);
+  const { articles, pagination } = await getArticles({ category: 'singers', page, limit: 9 });
+
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold">Singers</h1>
-      <p className="mt-2 text-brand-charcoal/80">Singers and musicians profiles — ready for implementation.</p>
-    </section>
+    <CategoryListingView
+      title="Singers & Musicians"
+      description="In-depth profiles of vocalists, songwriters, and recording artists with verified discographies and official chart milestones."
+      articles={articles}
+      pagination={pagination}
+      basePath="/singers"
+    />
   );
 }

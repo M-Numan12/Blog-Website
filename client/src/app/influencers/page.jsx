@@ -1,13 +1,25 @@
-export const metadata = {
+import CategoryListingView from '@/components/article/CategoryListingView';
+import { getArticles } from '@/lib/data';
+import { buildPageMetadata } from '@/lib/seo';
+
+export const metadata = buildPageMetadata({
   title: 'Influencers',
   description: 'Verified biographies and stories about digital creators and influencers.',
-};
+  path: '/influencers',
+});
 
-export default function InfluencersPage() {
+export default async function InfluencersPage({ searchParams }) {
+  const sp = await searchParams;
+  const page = Math.max(parseInt(sp?.page, 10) || 1, 1);
+  const { articles, pagination } = await getArticles({ category: 'influencers', page, limit: 9 });
+
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold">Influencers</h1>
-      <p className="mt-2 text-brand-charcoal/80">Creators and influencers profiles — ready for implementation.</p>
-    </section>
+    <CategoryListingView
+      title="Creators & Influencers"
+      description="Carefully sourced profiles documenting the backgrounds, studios, and public work of modern digital creators."
+      articles={articles}
+      pagination={pagination}
+      basePath="/influencers"
+    />
   );
 }

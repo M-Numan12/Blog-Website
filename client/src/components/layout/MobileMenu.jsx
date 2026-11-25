@@ -4,12 +4,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { NAV_LINKS } from '@/lib/constants';
+import SearchBar from '@/components/ui/SearchBar';
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
@@ -21,25 +22,21 @@ export default function MobileMenu() {
       </button>
 
       {open && (
-        <div className="absolute left-0 right-0 top-16 bg-brand-black border-b border-brand-gold/30 px-4 py-4 z-50">
+        <div className="absolute left-0 right-0 top-16 bg-brand-black border-b border-brand-gold/30 px-4 py-5 z-50 shadow-xl">
+          <div className="mb-4">
+            <SearchBar compact />
+          </div>
           <nav aria-label="Mobile navigation" className="flex flex-col gap-3">
             {NAV_LINKS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="text-sm font-medium text-brand-white hover:text-brand-gold"
+                className="py-1 text-base font-medium text-brand-white hover:text-brand-gold"
               >
                 {item.label}
               </Link>
             ))}
-            <Link
-              href="/search"
-              onClick={() => setOpen(false)}
-              className="text-sm font-medium text-brand-gold pt-2 border-t border-brand-white/10"
-            >
-              Search Profiles
-            </Link>
           </nav>
         </div>
       )}

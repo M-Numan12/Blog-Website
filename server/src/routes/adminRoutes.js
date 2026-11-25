@@ -1,17 +1,28 @@
 import { Router } from 'express';
 import { requireAuth, requireRole } from '../middleware/authMiddleware.js';
 import { uploadMedia } from '../middleware/upload.js';
-import { createArticle, updateArticle, deleteArticle } from '../controllers/articleController.js';
+import {
+  getAdminArticles,
+  getAdminArticleById,
+  createArticle,
+  updateArticle,
+  deleteArticle,
+} from '../controllers/articleController.js';
 import { createCategory, updateCategory, deleteCategory } from '../controllers/categoryController.js';
 import { getMediaList, uploadMediaAsset } from '../controllers/mediaController.js';
 import { listCommentsForModeration, moderateComment } from '../controllers/commentController.js';
-import { getAuditLogs } from '../controllers/auditLogController.js';
+import { getAuditLogs, getDashboardStats } from '../controllers/auditLogController.js';
 
 const router = Router();
 
 router.use(requireAuth);
 
+// Overview stats
+router.get('/stats', requireRole('admin', 'editor', 'author'), getDashboardStats);
+
 // Articles
+router.get('/articles', requireRole('admin', 'editor', 'author'), getAdminArticles);
+router.get('/articles/:id', requireRole('admin', 'editor', 'author'), getAdminArticleById);
 router.post('/articles', requireRole('admin', 'editor', 'author'), createArticle);
 router.patch('/articles/:id', requireRole('admin', 'editor', 'author'), updateArticle);
 router.delete('/articles/:id', requireRole('admin', 'editor'), deleteArticle);

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="CelebScope Entertainment Editorial Feature">
+  <rect width="1600" height="900" fill="#181818"/>
+  <rect x="64" y="64" width="1472" height="772" fill="none" stroke="#C9A44C" stroke-opacity="0.35" stroke-width="2"/>
+  <polygon points="1220,210 1410,590 1030,590" fill="none" stroke="#C9A44C" stroke-opacity="0.3" stroke-width="2"/>
+  <rect x="130" y="340" width="96" height="4" fill="#C9A44C"/>
+  <text x="130" y="315" fill="#C9A44C" font-family="Georgia, serif" font-size="24" letter-spacing="6">EDITORIAL FEATURE</text>
+  <text x="130" y="435" fill="#FFFFFF" font-family="Georgia, serif" font-size="72" font-weight="bold">Entertainment Desk</text>
+  <text x="130" y="505" fill="#CCCCCC" font-family="Arial, sans-serif" font-size="28">Awards, Industry Milestones &amp; Cultural Stories</text>
+</svg>

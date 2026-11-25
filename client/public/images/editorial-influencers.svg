@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="CelebScope Influencers Editorial Feature">
+  <rect width="1600" height="900" fill="#151515"/>
+  <rect x="64" y="64" width="1472" height="772" fill="none" stroke="#C9A44C" stroke-opacity="0.35" stroke-width="2"/>
+  <rect x="1030" y="230" width="380" height="440" rx="8" fill="#252525" stroke="#C9A44C" stroke-opacity="0.4" stroke-width="2"/>
+  <line x1="1080" y1="330" x2="1360" y2="330" stroke="#C9A44C" stroke-opacity="0.5" stroke-width="2"/>
+  <line x1="1080" y1="390" x2="1310" y2="390" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="2"/>
+  <line x1="1080" y1="450" x2="1340" y2="450" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="2"/>
+  <rect x="130" y="340" width="96" height="4" fill="#C9A44C"/>
+  <text x="130" y="315" fill="#C9A44C" font-family="Georgia, serif" font-size="24" letter-spacing="6">DIGITAL CULTURE</text>
+  <text x="130" y="435" fill="#FFFFFF" font-family="Georgia, serif" font-size="72" font-weight="bold">Creators &amp; Voices</text>
+  <text x="130" y="505" fill="#CCCCCC" font-family="Arial, sans-serif" font-size="28">Independent Media, Podcasts &amp; Public Figures</text>
+</svg>

@@ -1,7 +1,6 @@
 import { Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import SiteChrome from '@/components/layout/SiteChrome';
 import { SITE_CONFIG } from '@/lib/constants';
 
 const playfair = Playfair_Display({
@@ -27,10 +26,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+      <body>
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

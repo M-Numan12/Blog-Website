@@ -5,13 +5,17 @@ import MobileMenu from './MobileMenu';
 
 export default function Header() {
   return (
-    <header className="bg-brand-black text-brand-white border-b border-brand-gold/30">
+    <header className="sticky top-0 z-40 bg-brand-black text-brand-white border-b border-brand-gold/30">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
-        <Link href="/" className="font-serif text-2xl font-bold tracking-tight text-brand-gold">
-          {SITE_CONFIG.name}
+        <Link
+          href="/"
+          className="font-serif text-2xl font-bold tracking-tight text-brand-white flex items-center gap-1"
+        >
+          <span>Celeb</span>
+          <span className="text-brand-gold">Scope</span>
         </Link>
 
-        <nav aria-label="Primary navigation" className="hidden md:flex items-center gap-6">
+        <nav aria-label="Primary navigation" className="hidden lg:flex items-center gap-7">
           {NAV_LINKS.map((item) => (
             <Link
               key={item.href}
@@ -23,7 +27,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:block w-56">
+        <div className="hidden lg:block w-60">
           <SearchBar compact />
         </div>
 
